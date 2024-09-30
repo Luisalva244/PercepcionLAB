@@ -6,7 +6,6 @@
 #include <Adafruit_SSD1306.h>
 #include <WiFi.h>
 
-#define S2 21            /* Define S2 Pin Number of ESP32 */
 #define S3 15            /* Define S3 Pin Number of ESP32 */
 #define sensorOut 4      /* Define Sensor Output Pin Number of ESP32 */
 #define maxAttempts 20 
