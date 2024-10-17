@@ -7,6 +7,7 @@ Caso 1
 
 
 Case 2 LR = 0.01, epochs = 75
+X_sample = np.array([6, 1, 1, 42,33 , 39, 1,1,1])
 
 
 
