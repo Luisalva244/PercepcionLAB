@@ -282,7 +282,7 @@ void loop()
             bool colorDetected = false;
             htmlPage();
             
-            //Test case borrar despues de pruebas o comentar
+            //Test case borrar despues de pruebas o comentarj
             //colorDetected = true;
 
             while (!colorDetected)  // Repetir hasta que se detecte un color
