@@ -292,30 +292,36 @@ void loop()
                 blueCount = 0;
                 greenCount = 0;
                 htmlPage();
+                int colorCount = 0;
+                   while ((colorCount != 9 && redCount != 9) || (colorCount != 9 && blueCount != 9) || (colorCount != 9 && greenCount != 9))
+                    {     
+                      Red = getRed();
+                      delay(20); 
+                      Green = getGreen();
+                      delay(20); 
+                      Blue = getBlue();
+                      delay(20); 
 
-                for (attempt = 0; attempt < maxAttempts; attempt++) 
-                {
-                    Red = getRed();
-                    delay(20); 
-                    Green = getGreen();
-                    delay(20); 
-                    Blue = getBlue();
-                    delay(20); 
-
-                    Color detectedColor = getAverage(average);
+                      Color detectedColor = getAverage(average);
 
                     // Incrementar los contadores de color detectado
-                    if (detectedColor == RED) {
+                      if (detectedColor == RED)
+                      {
                         redCount++;
-                    } else if (detectedColor == BLUE) {
+                        colorCount++;
+                      } else if (detectedColor == BLUE) 
+                      {
                         blueCount++;
-                    } else if (detectedColor == GREEN) {
+                        colorCount++;
+                      } else if (detectedColor == GREEN) 
+                      {
                         greenCount++;
-                    }
+                        colorCount++;
+                      }
 
                     // Imprimir el conteo después de cada intento
                     Serial.printf("Intento %d - ROJO: %d, AZUL: %d, VERDE: %d\n", attempt + 1, redCount, blueCount, greenCount);
-                }
+                    }
                 
                 // Determinar el color más detectado
                 if (redCount > blueCount && redCount > greenCount) 
