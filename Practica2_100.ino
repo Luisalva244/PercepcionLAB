@@ -6,6 +6,7 @@
 #include <Adafruit_SSD1306.h>
 #include <WiFi.h>
 
+#define S2 21            /* Define S2 Pin Number of ESP32 */
 #define S3 15            /* Define S3 Pin Number of ESP32 */
 #define sensorOut 4      /* Define Sensor Output Pin Number of ESP32 */
 #define maxAttempts 20 
@@ -24,8 +25,8 @@
 #define trigPin 14       /* Trigger pin for ultrasonic sensor */
 #define servoPin 27      
 
-const char* ssid = "INFINITUM84AF";
-const char* password = "4tPVYEG7FE";
+const char* ssid = "Axtel_Point";
+const char* password = "036F1128";
 
 WiFiServer server(80);
 MFRC522 rfid(SS, 22); 
@@ -38,7 +39,7 @@ int getGreen();
 int getBlue();
 //Color getAverage(float &value); es una funcion pero no deja ponerla porque apunta a un enum y alch no se como se pone este pedo xd, una disculpa cesar 
 bool checkRFID();
-void readSensor(int &Distancia);
+void readSensor(float &Distancia);
 
 String DatoHex;
 bool statusRfid = false;
@@ -47,7 +48,7 @@ const String UserReg_2 = "B33786A3";
 const String UserReg_3 = "7762C83B";
 
 long duracion;
-int distancia = 0;
+float distancia = 0;
 
 bool carro1 = false;
 bool rfidDetected = false;
@@ -471,22 +472,10 @@ Color getAverage(float &value) {
     value = ((float)Red + (float)Blue + (float)Green) / 3;
     
      
-    /*
-    if ((Red >= 48 && Red <= 50) && (Blue >= 46 && Blue <= 48) && (Green >= 44 && value <= 46)) 
+    if ((Red >= 65 && Red <= 70) && (Blue >= 65 && Blue <= 70) && (Green >= 60 && Green <= 65)) 
     {
         RBG = GREEN;
-    } else if ((Red >= 40 && Red <= 43) && (Blue >= 45 && Blue <= 48) && (Green >= 60 && value <= 62))
-    {
-        RBG = RED;
-    } 
-    else if ((Red >= 55 && Red <= 58) && (Blue >= 34 && Blue <= 37) && (Green >= 44 && value <= 46))
-    {
-        RBG = BLUE;
-    } */
-    if ((Red >= 48 && Red <= 50) && (Blue >= 46 && Blue <= 48) && (Green >= 44 && Green <= 50)) 
-    {
-        RBG = GREEN;
-    } else if ((Red >= 40 && Red <= 43) && (Blue >= 45 && Blue <= 48) && (Green >= 60 && Green <= 62))
+    } else if ((Red >= 36 && Red <= 44) && (Blue >= 44 && Blue <= 52) && (Green >= 55 && Green <= 65))
     {
         RBG = RED;
     } 
@@ -502,7 +491,7 @@ Color getAverage(float &value) {
 }
 
 // Function to read distance from the ultrasonic sensor
-void readSensor(int &Distancia) {
+void readSensor(float &Distancia) {
     digitalWrite(trigPin, HIGH);
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
@@ -524,10 +513,9 @@ void readSensor(int &Distancia) {
     Serial.println(Distancia);
     //displayManager.showText("Distancia", distanciaString);
 
-    if ((Distancia < 9 && Distancia > 1) && !rfidDetected) {
+    if ((Distancia <= 12 && Distancia >= 2) && !rfidDetected) {
       carro1 = true;
       Serial.println("Object detected by ultrasonic sensor.");
-      displayManager.showText("Distancia", "Optima");
     }
 
     if (Distancia > 30 && carro1) {
