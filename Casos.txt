@@ -99,3 +99,14 @@ double dstd_y[4]={23.936,0.341,0.35,0.35};
 for(int i = 0 ; i < 5 ; i++ ) {aux = 0.0; for(int j = 0 ; j < 9 ; j++ ) { aux = aux + W1[i][j] * a0[j];}} a1[i] = relu(aux + b1[i]);}}
 for(int i = 0 ; i < 4 ; i++ ) {aux = 0.0; for(int j = 0 ; j < 5 ; j++ ) { aux = aux + W2[i][j] * a1[j];}} a2[i] = linear(aux + b2[i]);}}
 //////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+Caso 1 extremo 
+
+Validation Loss: [0.02929610013961792, 0.11481501162052155]
+ 
+Importante
+Las figuras se muestran en el panel de Gráficos por defecto. Para que también aparezcan en la terminal, desactive “Silenciar los gráficos en línea” en el menú de opciones de Gráficos.
+ Result: [[ 6.5537735e+01  2.6148755e-02 -1.7567804e-02  1.0332639e+00]]
