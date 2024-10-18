@@ -47,3 +47,19 @@ Result: [[ 6.5059677e+01 -1.6195592e-02  2.3198959e-03  1.0257543e+00]]
 
 
 
+Caso bajo 2
+
+
+
+X_sample = np.array([5, 1, 1, 39, 29, 37, 1,1,1])
+
+Validation Loss: [0.10067534446716309, 0.16969351470470428]
+
+Result: [[5.5882793e+01 2.4362037e-02 4.7291080e-03 2.0292847e-01]]
+
+
+
+![image](https://github.com/user-attachments/assets/edf19399-e415-454d-adca-a5a33ebe5ec1)
+
+
+
